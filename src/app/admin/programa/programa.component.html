@@ -1,0 +1,111 @@
+<div class="cart_info ">
+	<div class="container " style="padding-bottom: 80px;">
+
+		<div class="row ">
+			<div class="col-12 mb-2">
+				<p class="subtitle-table">PROGRAMA </p>
+				<h5 class="font-weight-bold">{{congreso?.nombre}} </h5>
+
+			</div>
+
+			<div class="col-12 mb-5 mt-5" >
+
+				<div class="container">
+					<div class="row mb-5">
+						<div class="col-12">
+							<a href="https://ciceblob2020.blob.core.windows.net/images/programacice2020.pdf" class="link_p"
+							 target="blank" download="https://ciceblob2020.blob.core.windows.net/images/programacice2020.pdf">
+							 <i class="fa fa-file-pdf-o" style="font-weight: 700;"></i>&nbsp; Ver programa CICE 2020</a>
+						</div>
+					</div>
+					<h5 style="font-weight: 600;color:red;font-size: 12px;"><i class="fa fa-info-circle " style=""></i>&nbsp; Seleccione un Eje Temático para ver el horario de las exposiciones </h5>
+					<div id="accordion" class="panel-group mt-3">
+
+						<div class="panel" *ngFor="let item of nPro;let i =index">
+							<div class="panel-heading" (click)='filtrarEje(item.id)'>
+								<h4 class="panel-title">
+									<a [href]="'#panelBodyOne'+i" class="accordion-toggle" data-toggle="collapse"
+										data-parent="#accordion">{{item.nombre}}</a>
+								</h4>
+							</div>
+							<div [id]="'panelBodyOne'+i" class="panel-collapse collapse in">
+								<div class="row" *ngFor="let item of programa">
+									<div class="col-12 col-lg-5 mx-auto">
+										<div class="text-center">
+											<h5
+												style="background-color: chocolate; padding:5px; color:white;font-weight: bold;">
+												{{item.nombreSala.toUpperCase()}}</h5>
+										</div>
+
+
+										<table class="table-progra">
+											<tr>
+												<td><i class="fa fa-clock-o"></i>&nbsp; Hora de reunión:</td>
+												<td>{{item.hora +' - '+item.fecha}} </td>
+											</tr>
+											<tr>
+												<td><i class="fa fa-link"></i>&nbsp;Dirección de reunión Zoom:</td>
+												<td><a style="color:chocolate;border:none;padding: 0;"
+														[href]="item.urlZoom" target="blank">Ingresar
+														a la reunión&nbsp;<i class="fa fa-external-link"></i></a>
+												</td>
+											</tr>
+											<tr>
+												<td><i class="fa fa-id-card"></i>&nbsp;ID de reunión:</td>
+												<td>{{item.idReunionZoom}}</td>
+											</tr>
+											<tr>
+												<td><i class="fa fa-key"></i>&nbsp;Código de acceso:</td>
+												<td>{{item.codigoAccesoZoom}}</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="panel">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="#panelBodyTwo" class="accordion-toggle collapsed" data-toggle="collapse"
+										data-parent="#accordion">Content Two</a>
+								</h4>
+							</div>
+							<div id="panelBodyTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>Energistically drive standardized communities through user friendly results.
+										Phosfluorescently initiate superior technologies vis-a-vis low-risk high-yield
+										solutions. Objectively facilitate clicks-and-mortar partnerships vis-a-vis
+										superior partnerships. Continually generate long-term high-impact methodologies
+										via wireless leadership. Holisticly seize resource maximizing solutions via user
+										friendly outsourcing.</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="#panelBodyThree" class="accordion-toggle collapsed" data-toggle="collapse"
+										data-parent="#accordion">Content Three</a>
+								</h4>
+							</div>
+							<div id="panelBodyThree" class="panel-collapse collapse">
+								<div class="panel-body">
+									<p>Energistically drive standardized communities through user friendly results.
+										Phosfluorescently initiate superior technologies vis-a-vis low-risk high-yield
+										solutions. Objectively facilitate clicks-and-mortar partnerships vis-a-vis
+										superior partnerships. Continually generate long-term high-impact methodologies
+										via wireless leadership. Holisticly seize resource maximizing solutions via user
+										friendly outsourcing.</p>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+
+				<!-- Latest compiled and minified JavaScript -->
+				<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+				  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+			</div>
+		</div>
+	</div>
+</div>

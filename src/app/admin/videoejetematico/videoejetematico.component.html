@@ -1,0 +1,47 @@
+<div class="cart_info ">
+	<div class="container " style="padding-bottom: 80px;">
+
+		<div class="row ">
+			<div class="col-12 mb-2">
+				<p class="subtitle-table"> VIDEOS EJES TEMATICOS </p>
+				<h5 class="font-weight-bold">{{congreso?.nombre}} </h5>
+			</div>
+
+			<div class="col-12 mb-5 mt-5" >
+
+				<div class="container">
+					
+					<div id="accordion" class="panel-group mt-3">
+
+						<div class="panel" *ngFor="let item of nPro;let i =index">
+							<div class="panel-heading" (click)='filtrarEje(item.id)'>
+								<h4 class="panel-title">
+									<a [href]="'#panelBodyOne'+i" class="accordion-toggle" data-toggle="collapse"
+										data-parent="#accordion">{{item.nombre}}</a>
+								</h4>
+							</div>
+							
+							<div [id]="'panelBodyOne'+i" class="panel-collapse collapse in">
+								<div class="row" *ngFor="let item of videoEjeTematico">
+									<div class="col-12 col-lg-5 mx-auto">																					
+										<div class="text-center">
+											<h5
+												style="background-color: chocolate; padding:5px; color:white;font-weight: bold;">
+												{{item.titulo.toUpperCase()}}</h5>
+										</div>
+										<div class=" embed-responsive embed-responsive-16by9">
+											<p>
+												<iframe width="560" height="315" [src]="getVideoIframe(item.video)" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

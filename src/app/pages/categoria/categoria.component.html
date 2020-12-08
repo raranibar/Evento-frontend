@@ -1,0 +1,53 @@
+<!-- 
+	<div class="homec">
+		<div class="home_container">
+			<div class="home_background" style="background-image:url(./assets/images/postal_3-min.jpg)"></div>
+			<div class="home_content_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="home_content">
+								<div class="home_title">Categorias<span>.</span></div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+<div class="main_container ">
+	<div class="container">
+		<div class="row">
+			<div class=" offset-1 col">
+				<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+					<div class="results">Categorias</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class=" offset-lg-1 col">
+				<div class="row">
+
+					<div [ngClass]="[(i%3!==0) ? 'offset-lg-1' : '']" [routerLink]="['/emprendimientos', item.id]"
+						class="col-12 col-lg-3 mt-5 category_container " *ngFor="let item of category;let i = index">
+						<div class="row">
+							<div class="col-12" style="padding:25px 0px 10px 0px ">
+								<div class="text-center">
+									<img [src]="'assets/images/logo/'+item.id+'.png'" width="80px" alt="">
+								</div>
+							</div>
+							<div class="col-12" style="padding: 15px;">
+								<div class="text-center">
+									<h3 style="font-weight: bold;">{{item.nombre}}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

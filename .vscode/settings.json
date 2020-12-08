@@ -1,0 +1,5 @@
+{
+    "editor.insertSpaces": false,
+    "appService.deploySubpath": "dist\\ucb-f",
+    "appService.defaultWebAppToDeploy": "/subscriptions/97adcf0f-6413-48ee-a9d9-e920f7451b2e/resourceGroups/cicebkapp/providers/Microsoft.Web/sites/cice2020tj"
+}

@@ -1,0 +1,145 @@
+<!-- <div class="homec">
+	<div class="home_container">
+		<div class="home_background" style="background-image:url(./assets/images/postal_3-min.jpg)"></div>
+		<div class="home_content_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="home_content">
+							<div class="home_title">Expositores<span>.</span></div>
+							<div class="home_text">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.
+									Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+
+<div class="main_container ">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 mb-3">
+				<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+					<div class="results">Expositores</div>
+				</div>
+			</div>
+			<div class="col-12 col-xl-5 mb-3">
+				<form class="contact_form" autocomplete="false" [formGroup]="expoForm">
+					<label for="contact_name"> <b>Ejes Temáticos</b></label><br>
+					<select class="" style="padding: 6px;width:100%" id="contact_name"
+						(change)="getExpositoresEje($event)" data-show-subtext="true" data-live-search="true"
+						formControlName="idExpo">
+
+						<option [ngValue]="item.id" *ngFor="let item of tematico">{{item.nombre}}</option>
+					</select>
+				</form>
+			</div>
+		</div>
+		<div *ngIf="!expositor" class="coco">
+			<div class="loading2"></div>
+		</div>
+		<div class="row">
+			<div class=" col-lg-12 col-12">
+
+				<div class="row mx-auto ">
+					<div class="col-12 col-lg-5 card  expositor_container mt-5"
+						[ngClass]="[(i%2!==0) ? 'offset-lg-1' : '']" *ngFor="let item of expositor;let i=index">
+						<div class="row no-gutters">
+							<div class="col-md-5">
+								<img [src]="item.foto" class="expo-img" alt="">
+							</div>
+							<div class="col-md-7">
+								<div class="card-body">
+									<div class="text-center" style="min-height: 50px;">
+										<h5 [ngClass]="[(item.nombreExposicion.length<=150) ? 'mt-5' : '']"
+											class="expo-title">
+											{{item.nombreExposicion.toUpperCase()}}</h5>
+									</div>
+									<hr>
+									<div class="col-12 expositor_name">
+										<div class="text-center">
+											<h5 class="expo-sub">
+												{{(item.nombres+" "+item.paterno+" "+((item.materno!=='-.-')?item.materno:'') )| titlecase}}
+											</h5>
+										</div>
+									</div>
+									<div class="col-12 expositor_description" *ngIf="item.institucion!='-.-'">
+										<div class="text-center">
+											<p class="expo-sub">
+												{{item.institucion}}</p>
+										</div>
+									</div>
+									<div class="col-12 expositor_name">
+										<div class="text-center">
+											<h5 class="expo-sub">{{(item.pais) | titlecase}}
+											</h5>
+										</div>
+									</div>
+									<a class="abrir-modal" style="color:white;"
+										(click)="mostrarExp(i)" data-toggle="modal" data-target="#exampleModal">&nbsp;
+										MÁS INFO&nbsp;</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<div class="modal-body p-1">
+				<div class="row">
+					<div class="col-10 mx-auto">
+						<table class="table-modal mt-2">
+							<tr>
+								<td >Título de
+									Exposición:</td>
+								<td>{{expId?.nombreExposicion.toUpperCase()}}</td>
+							</tr>
+							<tr *ngIf="expId?.institucion!=='-.-'">
+								<td>Institución Perteneciente:</td>
+								<td>{{expId?.institucion}}
+								</td>
+							</tr>
+							<tr>
+								<td>Nombre de Expositor:</td>
+								<td>{{(expId?.nombres+" "+expId?.paterno+" "+((expId?.materno!=='-.-')?expId?.materno:'') )| titlecase}}
+								</td>
+							</tr>
+
+							<tr>
+								<td>Pais:</td>
+								<td>{{expId?.pais}}
+								</td>
+							</tr>
+
+						</table>
+					</div>
+					<hr>
+					<div class="col-10 mx-auto " >
+						<h5 class="mt-4 " style="color:#606163;"><b> Resumen de Expositor:</b></h5>
+						<div class="text-cv" [innerHTML]="expId?.resumenCv"></div>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn " style="font-size: 14px;background-color: #006ba1; color:white" data-dismiss="modal">CERRAR</button>
+			</div>
+		</div>
+	</div>
+</div>

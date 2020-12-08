@@ -1,0 +1,42 @@
+
+	<div class="main_container ">
+		<div class="container" style="padding-bottom: 200px;">
+			<div class="row">
+				<div class=" offset-1 col">
+					<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+						<div class="results">Emprendimientos</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class=" offset-lg-1 col">
+					
+					<div class="row">
+
+						<div [ngClass]="[(i%2!==0) ? 'offset-lg-1' : '']" class="col-12 col-lg-5 mt-5 company_container" 
+						[routerLink]="['/emprendedor', item.id]" 
+						*ngFor="let item of emprendedor;let i = index" style="min-height: 100px;">
+							<div class="row">
+								<!-- <div class="col-3" style="padding:15px 0px 10px 0px ">
+									<div class="text-center" >
+										<img  src="assets/images/globo.png" width="60px" alt="">
+									</div>
+								</div> -->
+								<div class="col-12" style="padding: 15px;">
+									<div class="text-center">
+										<h3 style="font-weight: bold;">{{item.nombreEmprendimiento}}</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+
+
+					</div>
+			
+						
+				</div>
+			</div>
+		</div>
+	</div>
+

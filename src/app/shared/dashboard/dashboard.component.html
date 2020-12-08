@@ -1,0 +1,261 @@
+<div class="msb" id="msb">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="row">
+			<div class="col text-center mt-2">
+				<div class="col-md-5 text-center mx-auto">
+					<img src="assets/images/logo/logo.png" style="margin-right: 30px;" width="60" alt="">
+				</div>
+				<div class=" dashboard-logo">Congreso Internacional <br>de Ciencias Empresariales</div>
+				<div class="title-dash mt-5" *ngIf="global.idRol!==4">ADMINISTRACION</div>
+
+				<div class=" rol-text mt-5" *ngIf="global.idRol===1">ADMINISTRADOR</div>
+				<div class="rol-text mt-5" *ngIf="global.idRol===2">EMPRENDEDOR</div>
+				<div class="rol-text mt-5" *ngIf="global.idRol===3">REG. EXPOSITOR</div>
+				<div class="rol-text mt-5" *ngIf="global.idRol===4">PARTICIPANTE</div>
+				<div class="rol-text mt-5" *ngIf="global.idRol===5">REG PARTICIPANTE</div>
+
+				<div class="title-dash mt-2">
+					<p style="font-weight: bold; font-size: 12px;"> {{global?.email}}</p>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="side-menu-container">
+
+			<nav class="dash-nav">
+				<ul *ngIf="global.idRol===1">
+					<!-- <li><a routerLink="/admin/emprendedor">Emprendedor</a></li> -->
+					<li><a routerLink="/admin/expositor">Expositor</a></li>
+					<li><a routerLink="/admin/usuario">Usuario</a></li>
+					<!-- <li><a routerLink="/admin/participante">Participante</a></li> -->
+
+					<li><a routerLink="/admin/categoria">Categorias</a></li>
+					<li><a routerLink="/admin/congreso">Congreso</a></li>
+					<li><a routerLink="/admin/tematico">Eje Tematico</a></li>
+					<li><a routerLink="/admin/programa">Programa</a></li>
+					<li><a routerLink="/admin/videoEjetematico">Videos</a></li>
+					<li class="mb-5 mt-2">
+						<hr>
+					</li>
+				</ul>
+
+				<ul *ngIf="global.idRol===2">
+					<li><a [routerLink]="['/admin/emprendedor/update']"> Emprendimiento</a></li>
+					<li class=""><a [routerLink]="['/admin/usuario/update']"> Usuario</a></li>
+					<li><a [routerLink]="['/admin/programa']">Programa</a></li>
+					<li><a routerLink="/admin/videoEjetematico">Videos</a></li>
+					<li class="mb-5 mt-2">
+						<hr>
+					</li>
+					
+				</ul>
+
+				<ul *ngIf="global.idRol===3">
+					<li><a routerLink="/admin/expositor">Expositor</a></li>
+					<li class="mb-5 mt-2">
+						<hr>
+					</li>
+				</ul>
+				<ul *ngIf="global.idRol===4">
+					<li><a routerLink="/admin/programa">Programa</a></li>
+					<li><a routerLink="/admin/videoEjetematico">Videos</a></li>
+					<li class="mb-5 mt-2">
+						<hr>
+					</li>
+				</ul>
+
+				<ul *ngIf="global.idRol===5">
+					<li><a routerLink="/admin/usuario/nuevo">Participante</a></li>
+					<li class="mb-5 mt-2">
+						<hr>
+					</li>
+				</ul>
+
+
+				<ul class="otherNav">
+					<li><a routerLink="/" style="font-size: 14px;"><i class="fa fa-home"></i> Ir al sitio
+						</a></li>
+					<!-- <li><a style="font-size: 14px;" data-toggle="modal" data-target="#exampleModal"><i
+								class="fa fa-pencil"></i> Cambiar
+							Contraseña</a></li> -->
+					<li><a style="font-size: 14px;" (click)="logout()"> <i class="fa fa-sign-out"></i> Cerrar Sesion</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</nav>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form class="contact_form" autocomplete="false" [formGroup]="passForm" (submit)="cambiarClave()">
+					<div class="row">
+
+						<div class="col-xl-8 mb-3 mx-auto">
+							<label for="contact_name">Contraseña Actual*</label>
+							<input type="password" id="contact_name" class="contact_input" spellcheck="false"
+								formControlName="cPassword">
+						</div>
+						<div class="col-xl-8 mb-3 mx-auto ">
+							<label for="contact_name">Nueva Contraseña*</label>
+							<input type="password" id="contact_name" class="contact_input" spellcheck="false"
+								formControlName="password">
+						</div>
+						<div class="col-xl-8 mb-3 mx-auto">
+							<label for="contact_name">Confirme Contraseña*</label>
+							<input type="password" id="contact_name" class="contact_input" spellcheck="false"
+								formControlName="password2">
+						</div>
+						<div class="col-xl-8 mb-3 mx-auto">
+							<button class="button_form contact_button" type="submit"><span>Guardar</span></button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="nav-responsive">
+	<header class="header-x">
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="logo-main"><a routerLink=""><img src="assets/images/logo/logo.png"></a></div>
+							<div class="logo"><a routerLink=""><img src="assets/images/logo/text-logo.png"></a></div>
+							<nav class="main_nav">
+
+
+								<ul>
+									<li><a routerLink="/admin/expositor">Expositor</a></li>
+									<li><a routerLink="/admin/emprendedor">Emprendedor</a></li>
+									<li><a routerLink="/admin/usuario">Usuario</a></li>
+									<li><a routerLink="/admin/categoria">Categorias</a></li>
+									<li><a routerLink="/admin/informacion">Info Web</a></li>
+									<li><a routerLink="/admin/rol">Rol</a></li>
+									<li><a routerLink="/admin/tematico">Eje Tematico</a></li>
+
+								</ul>
+							</nav>
+							<div class="header_extra ml-auto">
+								<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search Panel -->
+		<div class="search_panel trans_300">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="search_panel_content d-flex flex-row align-items-center justify-content-end">
+							<form action="#">
+								<input type="text" class="search_input" placeholder="Search" required="required">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Social -->
+		<div class="header_social">
+			<ul>
+				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+	</header>
+
+	<div class="menu menu_mm trans_300">
+		<div class="menu_container menu_mm">
+			<div class="page_menu_content">
+
+				<div class="page_menu_search menu_mm">
+					<form action="#">
+						<input type="search" required="required" class="page_menu_search_input menu_mm"
+							placeholder="Search ">
+					</form>
+				</div>
+				<ul class="page_menu_nav2 menu_mm" *ngIf="global.idRol===1">
+					<!-- <li class="page_menu_item2 menu_mm"><a routerLink="/admin/emprendedor">Emprendedor</a></li> -->
+					<li class="page_menu_item2 menu_mm"><a routerLink="/admin/expositor">Expositor</a></li>
+					<li class="page_menu_item2 menu_mm"><a routerLink="/admin/usuario">Usuario</a></li>
+					<!-- <li class="page_menu_item2 menu_mm"><a routerLink="/admin/participante">Participante</a></li> -->
+					<li class="page_menu_item2 menu_mm"><a routerLink="/admin/categoria">Categorias</a></li>
+					<li class="page_menu_item2 menu_mm"><a routerLink="/admin/congreso">Congreso</a></li>
+					<li class="page_menu_item2 menu_mm"><a routerLink="/admin/tematico">Eje Tematico</a></li>
+				</ul>
+				<ul class="page_menu_nav2 menu_mm" *ngIf="global.idRol===2">
+					<li class="page_menu_item2 menu_mm"><a [routerLink]="['/admin/emprendedor/update']">
+							Emprendimiento</a></li>
+					<li class="mb-5 page_menu_item2 menu_mm"><a [routerLink]="['/admin/usuario/update']"> Usuario</a>
+					</li>
+					<li class="mb-5 page_menu_item2 menu_mm"><a routerLink="/admin/programa">Programa</a></li>
+
+				</ul>
+				<ul class="page_menu_nav2 menu_mm" *ngIf="global.idRol===3">
+					<li class="mb-5 page_menu_item2 menu_mm"><a [routerLink]="['/admin/expositor/update']">
+							Expositor</a>
+					</li>
+
+				</ul>
+				<ul class="page_menu_nav2 menu_mm" *ngIf="global.idRol===4">
+					<li class="mb-5 page_menu_item2 menu_mm"><a routerLink="/admin/programa">Programa</a></li>
+
+				</ul>
+				<ul class="" style="margin-top: 20px;">
+					<li class=" menu_mm" style="font-size: 12;font-weight: bold;padding-top:10px;color:#006ba1;"><a
+							routerLink="/" style="color:#006ba1;"><i class="fa fa-home"></i> Ir al sitio
+						</a></li>
+					<!-- <li class=" menu_mm" style="font-size: 12;font-weight: bold;padding-top:10px;color:#006ba1;"><a
+							data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-pencil"></i> Cambiar
+							Contraseña</a></li> -->
+
+					<li class=" menu_mm" style="font-size: 12;font-weight: bold;padding-top:10px;color:#006ba1;"><a
+							(click)="logout()" style="cursor: pointer;"> <i class="fa fa-sign-out"></i> Cerrar
+							Sesion</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+		<div class="menu_social">
+			<ul>
+				<li><a href="https://www.instagram.com/ucbtarija/?hl=es-la"><i class="fa fa-instagram"
+							aria-hidden="true"></i></a></li>
+				<li><a href="https://www.facebook.com/UCBTarija/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				</li>
+				<li><a href="https://twitter.com/tarijaucb?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

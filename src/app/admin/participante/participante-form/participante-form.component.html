@@ -1,0 +1,156 @@
+<!-- <div class="contact">
+	<div *ngIf="!vfUsuario&&global.idRol!==1" class="coco">
+		<div class="loading2"></div>
+		<div style="margin-top: 50px;">
+			<h3><b>CARGANDO...</b></h3>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 contact_col">
+				<div class="get_in_touch">
+					<div class="section_title" *ngIf="global.idRol===1">REGISTRAR USUARIO</div>
+					<div class="section_title" *ngIf="global.idRol!==1">MODIFICAR USUARIO</div>
+					<div class="contact_form_container">
+						<form class="contact_form" autocomplete="false" [formGroup]="usuarioForm"
+							(submit)="postUsuario()">
+							<div class="row ">
+
+								<div class="col-xl-12 mb-3">
+									<label for="contact_name">Congreso*</label><br>
+									<label for="contact_name"
+										style="color: black;font-size: 16px; font-weight: 700;">{{congress?.nombre}}</label><br>
+
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-12 mb-3">
+									<label for="contact_name" style="font-weight: bold;font-size: 14px;">Datos
+										Personales</label><br>
+								</div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Nombres*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="nombres">
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Apellido Paterno*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="paterno">
+								</div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Apellido Materno*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="materno">
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Telefono*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="fono">
+								</div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Direccion*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="direccion">
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+
+								<div class="col-xl-6 mb-3">
+									<label for="contact_name">Pais*</label><br>
+									<select class=" " style="width: 100%;" style="padding: 6px;" id="contact_name"
+										(change)="getCity($event)" data-show-subtext="true" data-live-search="true"
+										formControlName="idPais">
+										<option [ngValue]="5">Argentina</option>
+										<option [ngValue]="123" selected>Bolivia</option>
+										<option [ngValue]="89">Peru</option>
+										<option>----------------</option>
+
+										<option [ngValue]="item.id" *ngFor="let item of country">{{item.pais}}</option>
+									</select>
+								</div>
+								<div class="col-xl-6 mb-3">
+									<label for="contact_name">Ciudad*</label><br>
+									<select class=" " style="width: 100%;" style="padding: 6px;" id="contact_name"
+										data-show-subtext="true" data-live-search="true" formControlName="idCiudad">
+										<option ngDefaultControl selected>Seleccione una ciudad</option>
+										<option [ngValue]="item.id" *ngFor="let item of city">{{item.ciudad}}</option>
+									</select>
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-6 mb-3">
+									<label for="contact_name">Tipo de Documento*</label><br>
+									<select class=" " style="width: 100%;" style="padding: 6px;" id="contact_name"
+										data-show-subtext="true" data-live-search="true"
+										formControlName="idTipoDocumento">
+										<option [ngValue]="item.id" *ngFor="let item of documento">{{item.nombre}}
+										</option>
+									</select>
+								</div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Número de Documento*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="numDocumento">
+								</div>
+								<div class="col-xl-6 mb-3">
+									<label for="contact_name">Género*</label><br>
+									<select class=" " style="width: 100%;" style="padding: 6px;" id="contact_name"
+										data-show-subtext="true" data-live-search="true" formControlName="idGenero">
+										<option [ngValue]="item.id" *ngFor="let item of genero">{{item.nombre}}</option>
+									</select>
+								</div>
+								<div class="col-xl-12 mb-3 ">
+									<hr>
+								</div>
+								<div class="col-xl-12 mb-3">
+									<label for="contact_name" style="font-weight: bold;font-size: 14px;">Datos de
+										Usuario</label><br>
+
+								</div>
+								<div class="col-xl-6 mb-3">
+									<label for="contact_name">Rol*</label><br>
+									<select class=" " style="width: 100%;" style="padding: 6px;" id="contact_name"
+										[attr.disabled]="usuario.idRol!==1  ? '' : null" data-show-subtext="true"
+										data-live-search="true" formControlName="idRol">
+										<option [ngValue]="item.id" *ngFor="let item of role">{{item.nombre}}</option>
+									</select>
+								</div>
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-6 mb-3 ">
+									<label for="contact_name">Email*</label>
+									<input type="text" [attr.disabled]="usuario.idRol!==1 ? '' : null" id="contact_name"
+										class="contact_input" spellcheck="false" formControlName="email">
+								</div>
+								<div class="col-xl-12 mb-3 ">
+								</div>
+							</div>
+							<div class="row mt-5 ml-1">
+								<button class="button_form contact_button" *ngIf="usuario.idRol===1"
+									type="submit"><span>Guardar</span></button>&nbsp;
+								<button class="button_form contact_button" *ngIf="usuario.idRol!==1"
+									type="submit"><span>Actualizar</span></button>&nbsp;
+								<button class="button_form contact_button" routerLink="/admin/expositor"
+									type="button"><span>Cancelar</span></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 offset-xl-1 contact_col">
+				<div class="contact_info">
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	select {
+		width: 320px;
+	}
+</style> -->

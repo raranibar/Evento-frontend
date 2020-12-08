@@ -1,0 +1,46 @@
+.card{
+	border: none;
+}
+
+.padre-table{
+	display: table;
+	height:240px;
+  }
+   
+  .padre-table > div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+  }
+
+  .table-modal{
+	width: 100%;
+ }
+ .table-modal th, td {
+	font-weight: 700;
+	color:#606163;
+	text-align: left;
+	vertical-align: top;
+	padding: 10px;
+ }
+
+.text-cv p {
+	color:red
+}
+ 
+.abrir-modal{
+	position: absolute; right: 10px; top: 10px;font-weight:
+									 700;background-color: #006ba1;padding:3px;font-size: 12px;border-radius: 150px;
+}
+
+.expo-title{
+	color:#606163;;font-weight: 700;font-size: 16px;letter-spacing: 0.5px; word-wrap: break-word;
+}
+
+.expo-img{
+	width:100%;height: 320px; object-fit:cover;
+}
+
+.expo-sub{
+	font-weight: 700;color:#606163;
+}

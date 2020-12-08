@@ -1,0 +1,109 @@
+<div class="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 contact_col">
+				<div class="get_in_touch">
+					<div class="section_title">REGISTRAR CONGRESO</div>
+					<div class="contact_form_container">
+						<form class="contact_form" autocomplete="false" [formGroup]="congressForm"
+							(submit)="saveCongress()">
+							<div class="row ">
+
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-8 mb-3 ">
+									<label for="contact_name">Nombre*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="nombre">
+								</div>
+								<div class="col-xl-12 mb-3 ">
+								</div>
+								<div class="col-xl-8 mb-3 ">
+									<label for="contact_name">Email*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="email">
+								</div>
+
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-8 mb-3 ">
+									<label for="contact_name">Direccion*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="direccion">
+								</div>
+
+								<div class="col-xl-12 mb-3 "></div>
+								<div class="col-xl-8 mb-3 ">
+									<label for="contact_name">Responsable*</label>
+									<input type="text" id="contact_name" class="contact_input" spellcheck="false"
+										formControlName="responsable">
+								</div>
+
+								<div class="col-xl-12 mb-3 ">
+								</div>
+
+								<div class="col-xl-12 mb-4 ">
+									<label for="contact_name">Imagenes*</label><br>
+									<div class="custom-dropzone" ngx-dropzone [accept]="'image/*'"
+										(change)="onSelect($event)">
+										<ngx-dropzone-label>
+											<div>
+												<h2>Drag and Drop</h2>
+											</div>
+										</ngx-dropzone-label>
+										<ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview"
+											*ngFor="let f of files" [file]="f" [removable]="true"
+											(removed)="onRemove(f)">
+											<ngx-dropzone-label></ngx-dropzone-label>
+										</ngx-dropzone-image-preview>
+									</div>
+								</div>
+								<div class="col-xl-12 mb-3 ">
+								</div>
+
+								<div class="col-xl-12 mb-3 ">
+									<label for="contact_last_name">Informacion de Inicio*</label>
+
+									<editor apiKey="bf9y619rwmj5udi9g08hm6lrr9k8yk5puncgkryid27e802t"
+										formControlName="informacion" [init]="{
+										height: 500,
+										menubar: false,
+										plugins: [
+										'advlist autolink lists link image charmap print preview anchor',
+										'searchreplace visualblocks code fullscreen',
+										'insertdatetime media table paste code help wordcount'
+										],
+										toolbar:
+										'undo redo | h3 h4 | bold italic backcolor | \
+										alignleft aligncenter alignright alignjustify | \
+										bullist numlist outdent indent | removeformat | help'
+									}"></editor>
+								</div>
+
+							</div>
+							<div class="row mt-5 ml-1">
+								<button class="button_form contact_button"
+									type="submit"><span>Guardar</span></button>&nbsp;
+								<button class="button_form contact_button" routerLink="/admin/expositor"
+									type="button"><span>Cancelar</span></button>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 offset-xl-1 contact_col">
+				<div class="contact_info">
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	select {
+		width: 320px;
+	}
+</style>

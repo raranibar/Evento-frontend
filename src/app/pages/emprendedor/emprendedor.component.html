@@ -1,0 +1,222 @@
+<div *ngIf="!emprendedor" class="coco">
+	<div class="loading2"></div>
+	<div style="margin-top: 50px;">
+		<h3><b>CARGANDO...</b></h3>
+	</div>
+</div>
+<div class="product_details" *ngIf="emprendedor">
+	<div class="container">
+		<div class="row details_row">
+			<div class="col-lg-10 offset-lg-1">
+				<div class="details_content">
+					<div class="details_name text-center">{{emprendedor?.nombreEmprendimiento.toUpperCase()}}</div>
+					<!-- In Stock -->
+					<div class="details_text">
+						<p class="detail-user">Emprendedor: &nbsp;&nbsp;
+							{{(persona.nombres+" "+persona.paterno+" "+((persona.materno!=='-.-')?persona.materno:'') )| titlecase}}
+						</p>
+					</div>
+					<div class="details_text" [innerHTML]="emprendedor?.descripcion">
+					</div>
+				</div>
+				<div class=" offset-3 col-6" style="border-top: solid 2.5px #d0d0d0; margin-top: 51px;"></div>
+			</div>
+		</div>
+
+		<div class="row description_row" style="margin-top: 60px;">
+			<div class="col-12 mb-3  text-center">
+				<h4 style="font-weight: bold;">Multimedia</h4>
+			</div>
+			<div class="col-12 col-lg-6" [ngClass]="[video?.nombre ? 'col-lg-6' : 'col-lg-6 mx-auto']">
+				<div class="row">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+
+							<div class="carousel-item " *ngFor="let item of foto;let i=index"
+								[ngClass]="[i==0 ? 'active' : '']">
+								<img class="d-block w-100" [src]="item.nombre"
+									style="height: 500px;width: 100%; ;object-fit: cover;">
+							</div>
+
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+							data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleControls" role="button"
+							data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="col-12 col-lg-6 " *ngIf="video?.nombre">
+				<div class=" embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" [src]="video?.nombre | safe" allowfullscreen></iframe>
+				</div>
+			</div>
+			<div class=" offset-3 col-6" style="border-top: solid 2.5px #d0d0d0; margin-top: 81px;"></div>
+		</div>
+
+		<div class="row description_row" style="margin-top: 60px;">
+			<div class="col-12 col-lg-10 offset-lg-1">
+				<div class="row">
+					<div class="col-12 mb-3 text-center">
+						<h4 style="font-weight: bold;">Información</h4>
+					</div>
+					<div class="col-12 col-lg-12 text-center">
+						<div class="row justify-content-center h-100">
+							<div class="col-sm-8 align-self-center text-center">
+								<div class="">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-2 offset-1 col-lg-2 offset-lg-1">
+												<span>
+													<a [href]="'https://api.whatsapp.com/send?phone='+persona?.fono+'&text=urlencodedtext'"
+														target="_blank"><img src="assets/images/icons/wh.png"
+															width="30px" alt=""></a>
+												</span>
+											</div>
+											<div class="col-2 col-lg-2" *ngFor="let item of social">
+												<span>
+													<a [href]="item.direccion" target="blank"><img
+															[src]="'assets/images/icons/'+item.logo" width="30px"
+															alt=""></a>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="row ">
+							<div class="col-2 col-lg-1">
+								<span>
+									<a [href]="'https://api.whatsapp.com/send?phone='+persona?.fono+'&text=urlencodedtext'"
+										target="_blank"><img src="assets/images/icons/wh.png" width="30px" alt=""></a>
+								</span>
+							</div>
+							<div class="col-2 col-lg-1" *ngFor="let item of social">
+								<span>
+
+									<a [href]="item.direccion" target="_blank"><img
+											[src]="'assets/images/icons/'+item.logo" width="30px" alt=""></a>
+								</span>
+							</div>
+						</div> -->
+					</div>
+					<div class="col-12 col-lg-5 mx-auto mt-5 ">
+						<table class="table-info-p">
+							<tr>
+								<td> <i class="fa fa-envelope"></i>&nbsp; Email:</td>
+								<td> {{email}}</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-phone"></i>&nbsp;Telefono:</td>
+								<td>{{persona?.fono}}</td>
+							</tr>
+							<tr>
+								<td style="width: 100px;"><i class="fa fa-map-marker"></i>&nbsp;Dirección:</td>
+								<td> {{emprendedor?.ubicacion}}</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+			<div class=" offset-3 col-6" style="border-top: solid 2.5px #d0d0d0; margin-top: 51px;"></div>
+
+		</div>		
+
+		<div class="row description_row" style="margin-top: 30px;">
+			<div class="col-12 col-lg-10 offset-lg-1">
+				<div class="row">
+					<div class="col-12 mb-3 text-center">
+						<h4 style="font-weight: bold;">Calificación</h4>
+					</div>
+					<div class="col-11 col-lg-11 ">
+						<div class="row justify-content-center h-100">
+							<div class="col-sm-5 align-self-center text-center">
+								<div class="">
+									<div class="card-body">
+										<fieldset class="rating">
+											<ng-container *ngFor="let num of [5,4,3,2,1]">
+												<input (click)="procesoValor(num)" [id]="'star'+num" [value]="num"
+													name="rating" type="radio" />
+												<label class="full" [for]="'star'+num"></label>
+												<input (click)="procesoValor(num-(0.5))" [value]="num-(0.5)"
+													[id]="'halfstar'+num" name="rating" type="radio" />
+												<label class="half" [for]="'halfstar'+num"></label>
+											</ng-container>
+										</fieldset>
+										
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<table class="col-8 col-lg-3 mx-auto mb-3  table-rating">
+						<tr>
+							<td style="color:#606163">VOTOS:</td>
+							<td style="font-size: 34px; color:rgb(240, 205, 7)">{{votos}} <span
+									style="font-size: 12px;">votos</span></td>
+						</tr>
+						<tr>
+							<td style="color:#606163">PUNTAJE:</td>
+							<td style="font-size: 34px;color:rgb(240, 205, 7)">{{puntaje}} <span
+									style="font-size: 12px;">puntos</span> </td>
+						</tr>
+					</table>
+
+				</div>
+				<div class=" offset-3 col-6" style="border-top: solid 2.5px #d0d0d0; margin-top: 21px;"></div>
+			</div>
+
+		</div>
+		<div class="row description_row" style="margin-top: 60px;margin-bottom: 140px;">
+			<div class="col-10 offset-1 col-lg-10 offset-lg-1">
+				<div class="row">
+					<div class="col-12  mb-3 text-center">
+						<h4 style="font-weight: bold;">Comentarios</h4>
+					</div>
+					<div class="col-12 col-lg-10 offset-lg-1  mb-3 ">
+						<form class="contact_form" autocomplete="false" [formGroup]="comentarioForm"
+							(submit)="saveComentar()">
+
+							<div class="row">
+
+								<div class="col-10 col-lg-10 offset-1 " style="padding: 0px;">
+									<textarea placeholder="Comenta algo..." class="contact_input contact_textarea"
+										formControlName="comenta"></textarea>
+								</div>
+								
+								<div class="col-10 col-lg-10 offset-1 mt-3">
+									<button type="submit" class="button-comment"><span>Comentar</span></button>
+								</div>
+							</div>
+						</form>
+						<div class="row mt-5">
+							<div class="col-12">
+								<div class=" col-10 col-lg-10 offset-1 mt-3 coment-text"
+									*ngFor="let item of comentario">
+									<p style="line-height: 20px;">
+										{{item.comenta}}
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>

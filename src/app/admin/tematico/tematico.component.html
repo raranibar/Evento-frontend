@@ -1,0 +1,67 @@
+<div class="cart_info ">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-5  mb-5">
+				<div class="row row_cart_buttons">
+					<div class="col">
+						<div
+							class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
+							<div class="cart_buttons_right ml-lg-auto">
+								<div class="button update_cart_button"><a
+										routerLink="/admin/tematico/nuevo">Registrar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col-12 mb-2">
+				<p class="subtitle-table">EJE TEMATICO</p>
+			</div>
+			<div class="col-xl-3">
+				<input type="text" class="search-table-input" spellcheck="false" placeholder="Buscar">
+			</div>
+			<div class="col-12 mb-2" style="min-height: 300px;">
+
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Descripcion</th>
+								<th scope="col">Logo</th>
+
+								<th scope="col">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr *ngFor="let item of category;let i =index">
+								<th scope="row">{{i+1}}</th>
+								<td>{{item.nombre}}</td>
+								<td>{{item.descripcion}}</td>
+								<td><i class="fa fa-address-book-o"></i></td>
+								<td>
+									
+
+									<p class="button-actions ml-4">
+										<a style="cursor: pointer;"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
+										<a style="cursor: pointer;"  [routerLink]="['/admin/categorias',2 ]"><i class="fa fa-pencil"></i></a>
+									</p>
+								</td>
+							</tr> -->
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class=" row  ml-1">
+			<a class="button-nav-table"><span>Anterior</span></a>&nbsp;
+			<a class="button-nav-table"><span>Siguiente</span></a>
+		</div>
+	</div>
+</div>

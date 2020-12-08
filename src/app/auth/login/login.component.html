@@ -1,0 +1,49 @@
+<div class="row" style="margin-top:80px">
+	<div class="col-md-5 text-center mx-auto">
+		<img src="assets/images/logo/logo.png" style="margin-right: 30px;" width="60" alt="">
+		<div class="logo mt-2"><a href="#" style="font-size: 22px;font-weight: bold;color: #006ba1;">2do CONGRESO
+				INTERNACIONAL <br> CIENCIAS EMPRESARIALES</a></div>
+
+	</div>
+</div>
+
+
+<div class="pt-5">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 mx-auto">
+				<div class="card card-body p-4">
+
+					<form id="submitForm" action="/login" method="post" [formGroup]="loginForm" (submit)="login()">
+						<input type="hidden" name="_csrf" value="7635eb83-1f95-4b32-8788-abec2724a9a4">
+						<div class="form-group required">
+							<label for="username">Correo Electronico</label>
+							<input type="text" id="contact_name" class="contact_input" formControlName="login">
+
+						</div>
+						<div class="form-group required">
+							<label class="d-flex flex-row align-items-center" for="password">Clave
+							</label>
+							<input type="password" id="contact_name" class="contact_input" formControlName="password">
+						</div>
+
+						<input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue"
+							formControlName="remember">
+						<label for="checkbox-signup"> &nbsp;&nbsp;Recordarme </label>
+
+						<div class="form-group mx-auto pt-4">
+							<button class="btn btn-primary btn-block" style="background-color: #006ba1; font-size: 16px; font-weight: bold;letter-spacing: 1px;"
+								type="submit">INICIAR SESION</button>
+						</div>
+						<div class="" style="width: 100px;">
+							
+							<a routerLink="/" style="font-weight: bold; color:#006ba1;cursor: pointer;"><i class="fa fa-home"></i> Ir al sitio</a>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
